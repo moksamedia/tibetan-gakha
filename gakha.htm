@@ -1,0 +1,425 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body align="center" text="#000000" link="#000000"
+      vlink="#660000" alink="#000000">
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+
+</script>
+<style>
+    body {
+        color: black;
+        margin-bottom: 100px;
+    }
+    a {
+        color: black;
+    }
+    td img {
+        height: 130px;
+        width: 130px;
+        position: relative;
+        top:15px;
+    }
+    td div.spelling, td div.spelling-wylie {
+        width: 100%;
+        text-align: center;
+        font-size: 24px;
+        font-family: sans-serif;
+        position:relative;
+        top:-10px;
+        color: white;
+    }
+
+    td div.spelling {
+        display: none;
+    }
+
+    .underline {
+        text-decoration: underline;
+    }
+
+    .overline {
+        text-decoration: overline;
+    }
+
+    h3.show-hide {
+        color:black;
+    }
+
+    td h3 {
+        color:black;
+    }
+
+    td p {
+        color:black;
+    }
+
+    td {
+        cursor: pointer;
+    }
+
+    td:first-child {
+        padding-left: 10px;
+        padding-right: 10px;
+        min-width: 150px;
+    }
+
+    table, th, td {
+        border: 1px solid lightgrey;
+    }
+
+    table {
+        width:850px;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    @media only screen
+    and (max-device-width: 800px) {
+        table {
+            width: 90%;
+        }
+
+        table td:first-child {
+            display: none;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .spokenby {
+            font-size: 40px;
+            margin-top: 10px;
+        }
+
+        h3 a {
+            font-size: 45px;
+            font-weight: normal;
+        }
+
+        .links-container {
+            margin-bottom: 50px;
+        }
+
+        td div.spelling, td div.spelling-wylie {
+            padding-top:10px;
+            font-size: 30px;
+        }
+    }
+    @media only screen
+    and (max-device-width: 500px) {
+        table {
+            width: 100%;
+        }
+        table td:first-child {
+            display: none;
+        }
+    }
+
+
+</style>
+<h1 align="center" style="margin-top:50px;">Tibetan Consonants and Their Sounds</h1>
+<div class="spokenby" align="center">Spoken by Ge-she Ge-lek-cho-dak</div>
+<script language="javascript" type="text/javascript">
+
+  var playing = null;
+
+  function playSound(event, snd) {
+    event.preventDefault();
+    if (playing !== null && !playing.ended) playing.pause();
+    playing = new Audio(snd + '.wav');
+    playing.play();
+    $(event.target).closest('td').fadeOut(150).fadeIn(150);
+  }
+  var visible = false;
+
+  function showWylie() {
+    $(".spelling-wylie").css("color", "black").show();
+    $("td img").css("top", "15");
+    $('td:not(:first-child)').css('padding-bottom', '0px');
+  }
+
+  function hideWylie() {
+    $(".spelling-wylie").css("color", "white").hide();
+    $("td img").css("top", "15");
+    $('td:not(:first-child)').css('padding-bottom', '28px');
+  }
+
+  function showCentral() {
+    $(".spelling").css("color", "black").show();
+    $("td img").css("top", "15");
+    $('td:not(:first-child)').css('padding-bottom', '0px');
+  }
+
+  function hideCentral() {
+    $(".spelling").css("color", "white").hide();
+    $("td img").css("top", "15");
+    $('td:not(:first-child)').css('padding-bottom', '28px');
+  }
+
+  function showHide(event, which) {
+    event.preventDefault();
+
+    if (which == 'wylie') {
+      if (visible == 'wylie') {
+        hideWylie();
+        visible = false;
+      }
+      else {
+        hideCentral();
+        showWylie();
+        visible = 'wylie';
+      }
+    }
+    else {
+      if (visible == 'central') {
+        hideCentral();
+        visible = false;
+      }
+      else {
+        hideWylie();
+        showCentral();
+        visible = 'central';
+      }
+    }
+
+  }
+  function playWhole(event) {
+    event.preventDefault();
+    if (playing !== null && !playing.ended) playing.pause();
+    playing = new Audio('gakha-fixed-full.wav');
+    playing.play();
+    $(event.target).fadeOut(300).fadeIn(300).fadeOut(300).fadeIn(300).fadeOut(300).fadeIn(300);
+  }
+</script>
+<div class="links-container">
+    <h3 id="play-whole" class="play-whole"><a href="" onclick="playWhole(event);">Listen to entire alphabet</a></h3>
+    <h3 id="show-hide" class="show-hide"><a href="" onclick="showHide(event, 'wylie');">Show/Hide Wylie Transliteration</a></h3>
+    <h3 id="show-hide-central" class="show-hide"><a href="" onclick="showHide(event, 'central');">Show/Hide Central Tibetan Phonetization</a></h3>
+</div>
+<table cellpadding="0" cellspacing="0" border=".5"
+       align="center" bgcolor="white">
+    <tbody>
+
+    <tr>
+        <td valign="center" bgcolor="white" onclick="playSound(event,'gakha-row1');" >
+            <h3>Gutterals</h3>
+            <p>Sound produced from throat</p>
+        </td>
+        <td valign="top" bgcolor="white" onclick="playSound(event,'ka-fixed');">
+            <img src="gif/ka.png" alt="ka" />
+            <div class="spelling"><span class="overline">g</span>a</div>
+            <div class="spelling-wylie">ka</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'kha-fixed');">
+            <img src="gif/kha.png" alt="kha" />
+            <div class="spelling">kha</div>
+            <div class="spelling-wylie">kha</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'ga');">
+            <img src="gif/ga.png" alt="ga" />
+            <div class="spelling">ka</div>
+            <div class="spelling-wylie">ga</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'nga');">
+            <img src="gif/nga.png" alt="nga" />
+            <div class="spelling"><span class="underline">n</span>ga</div>
+            <div class="spelling-wylie">nga</div>
+        </td>
+    </tr>
+
+    <tr>
+        <td valign="center" bgcolor="white" onclick="playSound(event,'gakha-row2');">
+            <h3>Palatals</h3>
+            <p>Tongue touching hard palate</p>
+        </td>
+        <td valign="top" onclick="playSound(event,'ca');">
+            <img src="gif/ca.png" alt="ca" />
+            <div class="spelling"><span class="overline">j</span>a</div>
+            <div class="spelling-wylie">ca</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'cha');">
+            <img src="gif/cha.png" alt="cha" />
+            <div class="spelling">cha</div>
+            <div class="spelling-wylie">cha</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'ja');" >
+            <img src="gif/ja.png" alt="ja" />
+            <div class="spelling"><span class="underline">c</span>ha</div>
+            <div class="spelling-wylie">ja</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'nya');">
+            <img src="gif/nya.png" alt="nya" />
+            <div class="spelling"><span class="underline">n</span>ya</div>
+            <div class="spelling-wylie">nya</div>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td valign="center" bgcolor="white" onclick="playSound(event,'gakha-row3');">
+            <h3>Dentals</h3>
+            <p>Tongue touching back of front teeth</p>
+        </td>
+        <td valign="top" onclick="playSound(event,'ta');">
+            <img src="gif/ta.png" alt="ta" />
+            <div class="spelling"><span class="overline">d</span>a</div>
+            <div class="spelling-wylie">ta</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'tha');">
+            <img src="gif/tha.png" alt="tha" />
+            <div class="spelling">tha</div>
+            <div class="spelling-wylie">tha</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'da');">
+            <img src="gif/da.png" alt="da" />
+            <div class="spelling">ta</div>
+            <div class="spelling-wylie">da</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'na');">
+            <img src="gif/na.png" alt="na" />
+            <div class="spelling"><span class="underline">n</span>a</div>
+            <div class="spelling-wylie">na</div>
+        </td>
+    </tr>
+
+    <tr>
+        <td valign="center" bgcolor="white" onclick="playSound(event,'gakha-row4');">
+            <h3>Labials</h3>
+            <p>Made using lips</p>
+        </td>
+        <td valign="top" onclick="playSound(event,'pa-fixed');">
+            <img src="gif/pa.png" alt="pa" />
+            <div class="spelling"><span class="overline">b</span>a</div>
+            <div class="spelling-wylie">pa</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'pha-fixed');">
+            <img src="gif/pha.png" alt="pha" />
+            <div class="spelling">pha</div>
+            <div class="spelling-wylie">pha</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'ba-fixed');">
+            <img src="gif/ba.png" alt="ba" />
+            <div class="spelling">pa</div>
+            <div class="spelling-wylie">ba</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'ma-fixed');">
+            <img src="gif/ma.png" alt="ma" />
+            <div class="spelling"><span class="underline">m</span>a</div>
+            <div class="spelling-wylie">ma</div>
+        </td>
+    </tr>
+
+    <tr>
+        <td valign="center" bgcolor="white" onclick="playSound(event,'gakha-row5');">
+            <p>First three are palatals made with tongue touching hard palate, but also making z or s sound.</p>
+        </td>
+        <td valign="top" onclick="playSound(event,'tsa-fixed');">
+            <img src="gif/tsa.png" alt="tsa" />
+            <div class="spelling"><span class="overline">d</span>za</div>
+            <div class="spelling-wylie">tsa</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'tsha-fixed');">
+            <img src="gif/tsha.png" alt="tsha" />
+            <div class="spelling">tsha</div>
+            <div class="spelling-wylie">tsha</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'dza-fixed');">
+            <img src="gif/dza.png" alt="dza" />
+            <div class="spelling"><span class="underline">d</span>za</div>
+            <div class="spelling-wylie">dza</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'wa-fixed');">
+            <img src="gif/wa.png" alt="wa" />
+            <div class="spelling">wa</div>
+            <div class="spelling-wylie">wa</div>
+        </td>
+    </tr>
+
+    <tr>
+        <td valign="center" bgcolor="white" onclick="playSound(event,'gakha-row6');">
+            <p>First two are low tone sibilants. Last two are the short "a" and a semivowel "ya".</p>
+        </td>
+        <td valign="top" onclick="playSound(event,'zha-fixed');">
+            <img src="gif/zha.png" alt="zha" />
+            <div class="spelling"><span class="underline">s</span>ha</div>
+            <div class="spelling-wylie">zha</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'za-fixed');">
+            <img src="gif/za.png" alt="za" />
+            <div class="spelling"><span class="underline">s</span>a</div>
+            <div class="spelling-wylie">za</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'a-fixed');">
+            <img src="gif/a.png" alt="a" />
+            <div class="spelling">a</div>
+            <div class="spelling-wylie">'a</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'ya-fixed');">
+            <img src="gif/ya.png" alt="ya" />
+            <div class="spelling">ya</div>
+            <div class="spelling-wylie">ya</div>
+        </td>
+    </tr>
+
+    <tr>
+        <td valign="center" bgcolor="white" onclick="playSound(event,'gakha-row7');">
+            <p>First two are remaining semivowels. Last two are high tone sibilants.</p>
+        </td>
+        <td valign="top" onclick="playSound(event,'ra-fixed');">
+            <img src="gif/ra.png" alt="ra" />
+            <div class="spelling">ra</div>
+            <div class="spelling-wylie">ra</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'la-fixed');">
+            <img src="gif/la.png" alt="la" />
+            <div class="spelling">la</div>
+            <div class="spelling-wylie">la</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'sha-fixed');">
+            <img src="gif/sha.png" alt="sha" />
+            <div class="spelling"><span class="overline">s</span>ha</div>
+            <div class="spelling-wylie">sha</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'sa-fixed');">
+            <img src="gif/sa.png" alt="sa" />
+            <div class="spelling"><span class="overline">s</span>a</div>
+            <div class="spelling-wylie">sa</div>
+        </td>
+    </tr>
+
+    <tr>
+        <td valign="center" bgcolor="white" onclick="playSound(event,'gakha-row8');">
+            <p>Last letter is the prevalent "a" sound.</p>
+        </td>
+        <td valign="top" onclick="playSound(event,'ha');">
+            <img src="gif/ha.png" alt="ha" />
+            <div class="spelling">ha</div>
+            <div class="spelling-wylie">ha</div>
+        </td>
+        <td valign="top" onclick="playSound(event,'ah');">
+            <img src="gif/ah.png" alt="ah" />
+            <div class="spelling">a</div>
+            <div class="spelling-wylie">a</div>
+        </td>
+        <td valign="top">
+        </td>
+        <td valign="top">
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+<p style="margin-top:40px; margin-bottom: 5px;">Credit to William Magee of Maitripa and the UMA Institute.</p><p style="margin-top:5px;">This is an updated/restyled version of his work.</p>
+</body>
+</html>
