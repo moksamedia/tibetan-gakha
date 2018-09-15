@@ -217,9 +217,15 @@
   function playWhole(event) {
     event.preventDefault();
     if (playing !== null && !playing.ended) playing.pause();
-    playing = new Audio('gakha-fixed-full.wav');
+    playing = new Audio('gakha-full.wav');
     playing.play();
     $(event.target).fadeOut(300).fadeIn(300).fadeOut(300).fadeIn(300).fadeOut(300).fadeIn(300);
+  }
+
+  function playColumn1(event) {
+    event.preventDefault();
+    if (playing !== null && !playing.ended) playing.pause();
+    playing = new Audio('gakha-full.wav');
   }
 </script>
 <div class="links-container">
@@ -232,10 +238,10 @@
     <tbody>
     <tr>
         <th></th>
-        <th bgcolor="white" onclick="playSound(event,'ka-fixed');">
+        <th bgcolor="white" onclick="playColumn1(event);">
             <p>High tone, no aspiration</p>
         </th>
-        <th onclick="playSound(event,'kha-fixed');">
+        <th onclick="playSound(event,'kha');">
             <p>Medium tone, heavy aspiration</p>
         </th>
         <th onclick="playSound(event,'ga');">
@@ -250,12 +256,12 @@
             <h3>Gutterals</h3>
             <p>Sound produced from throat</p>
         </td>
-        <td bgcolor="white" onclick="playSound(event,'ka-fixed');">
+        <td bgcolor="white" onclick="playSound(event,'ka');">
             <img src="gif/ka.png" alt="ka" />
             <div class="spelling"><span class="overline">g</span>a</div>
             <div class="spelling-wylie">ka</div>
         </td>
-        <td onclick="playSound(event,'kha-fixed');">
+        <td onclick="playSound(event,'kha');">
             <img src="gif/kha.png" alt="kha" />
             <div class="spelling">kha</div>
             <div class="spelling-wylie">kha</div>
@@ -332,22 +338,22 @@
             <h3>Labials</h3>
             <p>Made using lips</p>
         </td>
-        <td onclick="playSound(event,'pa-fixed');">
+        <td onclick="playSound(event,'pa');">
             <img src="gif/pa.png" alt="pa" />
             <div class="spelling"><span class="overline">b</span>a</div>
             <div class="spelling-wylie">pa</div>
         </td>
-        <td onclick="playSound(event,'pha-fixed');">
+        <td onclick="playSound(event,'pha');">
             <img src="gif/pha.png" alt="pha" />
             <div class="spelling">pha</div>
             <div class="spelling-wylie">pha</div>
         </td>
-        <td onclick="playSound(event,'ba-fixed');">
+        <td onclick="playSound(event,'ba');">
             <img src="gif/ba.png" alt="ba" />
             <div class="spelling">pa</div>
             <div class="spelling-wylie">ba</div>
         </td>
-        <td onclick="playSound(event,'ma-fixed');" class="red-bottom">
+        <td onclick="playSound(event,'ma');" class="red-bottom">
             <img src="gif/ma.png" alt="ma" />
             <div class="spelling"><span class="underline">m</span>a</div>
             <div class="spelling-wylie">ma</div>
@@ -358,22 +364,22 @@
         <td onclick="playSound(event,'gakha-row5');">
             <p>First three are palatals made with tongue touching hard palate, but also making z or s sound.</p>
         </td>
-        <td onclick="playSound(event,'tsa-fixed');" class="red-bottom">
+        <td onclick="playSound(event,'tsa');" class="red-bottom">
             <img src="gif/tsa.png" alt="tsa" />
             <div class="spelling"><span class="overline">d</span>za</div>
             <div class="spelling-wylie">tsa</div>
         </td>
-        <td onclick="playSound(event,'tsha-fixed');" class="red-bottom">
+        <td onclick="playSound(event,'tsha');" class="red-bottom">
             <img src="gif/tsha.png" alt="tsha" />
             <div class="spelling">tsha</div>
             <div class="spelling-wylie">tsha</div>
         </td>
-        <td onclick="playSound(event,'dza-fixed');" class="red-bottom">
+        <td onclick="playSound(event,'dza');" class="red-bottom">
             <img src="gif/dza.png" alt="dza" />
             <div class="spelling"><span class="underline">d</span>za</div>
             <div class="spelling-wylie">dza</div>
         </td>
-        <td onclick="playSound(event,'wa-fixed');" class="red-left">
+        <td onclick="playSound(event,'wa');" class="red-left">
             <img src="gif/wa.png" alt="wa" />
             <div class="spelling">wa</div>
             <div class="spelling-wylie">wa</div>
@@ -384,22 +390,22 @@
         <td onclick="playSound(event,'gakha-row6');">
             <p>First two are low tone sibilants. Last two are the short "a" and a semivowel "ya".</p>
         </td>
-        <td onclick="playSound(event,'zha-fixed');">
+        <td onclick="playSound(event,'zha');">
             <img src="gif/zha.png" alt="zha" />
             <div class="spelling"><span class="underline">s</span>ha</div>
             <div class="spelling-wylie">zha</div>
         </td>
-        <td onclick="playSound(event,'za-fixed');">
+        <td onclick="playSound(event,'za');">
             <img src="gif/za.png" alt="za" />
             <div class="spelling"><span class="underline">s</span>a</div>
             <div class="spelling-wylie">za</div>
         </td>
-        <td onclick="playSound(event,'a-fixed');">
+        <td onclick="playSound(event,'a');">
             <img src="gif/a.png" alt="a" />
             <div class="spelling">a</div>
             <div class="spelling-wylie">'a</div>
         </td>
-        <td onclick="playSound(event,'ya-fixed');">
+        <td onclick="playSound(event,'ya');">
             <img src="gif/ya.png" alt="ya" />
             <div class="spelling">ya</div>
             <div class="spelling-wylie">ya</div>
@@ -410,22 +416,22 @@
         <td onclick="playSound(event,'gakha-row7');">
             <p>First two are remaining semivowels. Last two are high tone sibilants.</p>
         </td>
-        <td onclick="playSound(event,'ra-fixed');">
+        <td onclick="playSound(event,'ra');">
             <img src="gif/ra.png" alt="ra" />
             <div class="spelling">ra</div>
             <div class="spelling-wylie">ra</div>
         </td>
-        <td onclick="playSound(event,'la-fixed');">
+        <td onclick="playSound(event,'la');">
             <img src="gif/la.png" alt="la" />
             <div class="spelling">la</div>
             <div class="spelling-wylie">la</div>
         </td>
-        <td onclick="playSound(event,'sha-fixed');">
+        <td onclick="playSound(event,'sha');">
             <img src="gif/sha.png" alt="sha" />
             <div class="spelling"><span class="overline">s</span>ha</div>
             <div class="spelling-wylie">sha</div>
         </td>
-        <td onclick="playSound(event,'sa-fixed');">
+        <td onclick="playSound(event,'sa');">
             <img src="gif/sa.png" alt="sa" />
             <div class="spelling"><span class="overline">s</span>a</div>
             <div class="spelling-wylie">sa</div>
