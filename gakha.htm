@@ -80,7 +80,6 @@
         border-spacing: 1px;
         border-collapse: collapse;
         margin: 0 auto;
-        margin-top: 50px;
     }
 
     td {
@@ -100,6 +99,17 @@
     .red-left {
         border-left: 3px solid darkred;
     }
+
+    .pointer {
+        cursor: pointer;
+    }
+
+    .instructions {
+        width: 50%;
+        margin: 0 auto;
+        margin-top:50px;
+    }
+
 
 
     @media only screen
@@ -146,10 +156,7 @@
         }
     }
 
-
 </style>
-<h1 align="center" style="margin-top:50px;">Tibetan Consonants and Their Sounds</h1>
-<div class="spokenby" align="center">Spoken by Ge-she Ge-lek-cho-dak</div>
 <script language="javascript" type="text/javascript">
 
   var playing = null;
@@ -222,32 +229,109 @@
     $(event.target).fadeOut(300).fadeIn(300).fadeOut(300).fadeIn(300).fadeOut(300).fadeIn(300);
   }
 
+  function playSoundWithDelay(sound, delay, callback) {
+    if (playing !== null && !playing.ended) playing.pause();
+    playing = new Audio(sound+'.wav');
+    if (callback !== undefined) {
+      playing.addEventListener("ended", function () {
+        setTimeout(
+          function(){
+            callback();
+          }, delay);
+      }, false);
+    }
+    playing.play();
+  }
+
   function playColumn1(event) {
     event.preventDefault();
-    if (playing !== null && !playing.ended) playing.pause();
-    playing = new Audio('gakha-full.wav');
+    $(event.target).closest('th').fadeOut(150).fadeIn(150);
+    playSoundWithDelay('ka', 500, function() {
+      playSoundWithDelay('ca', 500, function () {
+        playSoundWithDelay('ta', 500, function () {
+          playSoundWithDelay('pa', 500, function () {
+            playSoundWithDelay('tsa', 500, function () {
+
+            })
+          })
+        })
+      })
+    });
   }
+
+  function playColumn2(event) {
+    event.preventDefault();
+    $(event.target).closest('th').fadeOut(150).fadeIn(150);
+    playSoundWithDelay('kha', 500, function() {
+      playSoundWithDelay('cha', 500, function () {
+        playSoundWithDelay('tha', 700, function () {
+          playSoundWithDelay('pha', 500, function () {
+            playSoundWithDelay('tsha', 500, function () {
+
+            })
+          })
+        })
+      })
+    });
+  }
+
+  function playColumn3(event) {
+    event.preventDefault();
+    $(event.target).closest('th').fadeOut(150).fadeIn(150);
+    playSoundWithDelay('ga', 200, function() {
+      playSoundWithDelay('ja', 200, function () {
+        playSoundWithDelay('da', 400, function () {
+          playSoundWithDelay('ba', 400, function () {
+            playSoundWithDelay('dza', 200, function () {
+
+            })
+          })
+        })
+      })
+    });
+  }
+
+  function playColumn4(event) {
+    event.preventDefault();
+    $(event.target).closest('th').fadeOut(150).fadeIn(150);
+    playSoundWithDelay('nga', 100, function() {
+      playSoundWithDelay('nya', 200, function () {
+        playSoundWithDelay('na', 200, function () {
+          playSoundWithDelay('ma', 200, function () {
+          })
+        })
+      })
+    });
+  }
+
 </script>
+<h1 align="center" style="margin-top:50px;">Tibetan Consonants and Their Sounds</h1>
+<div class="spokenby" align="center">Spoken by Ge-she Ge-lek-cho-dak</div>
 <div class="links-container">
     <h3 id="play-whole" class="play-whole"><a href="" onclick="playWhole(event);">Listen to entire alphabet</a></h3>
     <h3 id="show-hide" class="show-hide"><a href="" onclick="showHide(event, 'wylie');">Show/Hide Wylie Transliteration</a></h3>
     <h3 id="show-hide-central" class="show-hide"><a href="" onclick="showHide(event, 'central');">Show/Hide Central Tibetan Phonetization</a></h3>
+</div>
+
+<div class="instructions">
+    <p>Click on individual characters to play them once. Click on row or column headers to play entire row or column (up to the red dividing line where
+    the regular pattern stops).</p>
 </div>
 <table>
 
     <tbody>
     <tr>
         <th></th>
-        <th bgcolor="white" onclick="playColumn1(event);">
+        <th class="pointer" onclick="playColumn1(event);">
             <p>High tone, no aspiration</p>
         </th>
-        <th onclick="playSound(event,'kha');">
+        <th class="pointer" onclick="playColumn2(event);">
             <p>Medium tone, heavy aspiration</p>
         </th>
-        <th onclick="playSound(event,'ga');">
+        <th class="pointer" onclick="playColumn3(event);">
             <p>Low tone, semi-aspirant</p>
         </th>
-        <th onclick="playSound(event,'nga');">
+        <th class="pointer" onclick="playColumn4(event);">
             <p>Low tone, nasal</p>
         </th>
     </tr>
