@@ -33,7 +33,7 @@
         font-family: sans-serif;
         position:relative;
         top:-10px;
-        color: rgba(0,0,0,0);
+        color: white;
     }
 
     td div.spelling {
@@ -88,18 +88,15 @@
         border-spacing: 1px;
         border-collapse: collapse;
         margin: 0 auto;
-        box-sizing: border-box;
     }
 
     td {
         text-align: center;
         vertical-align: center;
-        box-sizing: border-box;
     }
 
     th {
         padding: 5px;
-        box-sizing: border-box;
     }
 
 
@@ -121,9 +118,7 @@
         margin-top:50px;
     }
 
-    .selected {
-        background-color: rgba(244, 229, 66, 0.5);
-    }
+
 
     @media only screen
     and (max-device-width: 800px) {
@@ -183,8 +178,6 @@
   }
   var visible = false;
 
-  var transparent = "rgba(0,0,0,0)";
-
   function showWylie() {
     $(".spelling-wylie").css("color", "black").show();
     $("td img").css("top", "15");
@@ -192,7 +185,7 @@
   }
 
   function hideWylie() {
-    $(".spelling-wylie").css("color", transparent).hide();
+    $(".spelling-wylie").css("color", "white").hide();
     $("td img").css("top", "15");
     $('td:not(:first-child)').css('padding-bottom', '28px');
   }
@@ -204,7 +197,7 @@
   }
 
   function hideCentral() {
-    $(".spelling").css("color", transparent).hide();
+    $(".spelling").css("color", "white").hide();
     $("td img").css("top", "15");
     $('td:not(:first-child)').css('padding-bottom', '28px');
   }
@@ -344,162 +337,6 @@
     return $('td#_'+soundName);
   }
 
-  function combine(array1, array2) {
-    var combos = [];
-    array1.forEach(function(a1){
-      array2.forEach(function(a2){
-        combos.push([a1, a2]);
-      });
-    });
-    return combos;
-  }
-
-  function getColumn(matrix, col){
-    var column = [];
-    for(var i=0; i<matrix.length; i++){
-      column.push(matrix[i][col]);
-    }
-    return column;
-  }
-
-  var selectedChars = [];
-
-  $(function() {
-    $("input[type=checkbox]").click(function () {
-      $(".selected").removeClass('selected');
-      selectedChars = getPossibleChars();
-      currentElement = getRandomElement(selectedChars);
-    });
-  });
-
-  function getPossibleChars() {
-
-    var rows = [];
-    var cols = [];
-
-    $("input[type=checkbox].row").each(function () {
-
-      if ($(this).prop('checked')) {
-        var value = $(this).val();
-        rows.push(value);
-      }
-
-    });
-
-
-    $("input[type=checkbox].col").each(function () {
-
-      if ($(this).prop('checked')) {
-        var value = $(this).val();
-        cols.push(value);
-      }
-
-    });
-
-    var selected = [];
-
-    if (rows.length > 0 && cols.length == 0) {
-
-      rows.forEach(function (rowIdx) {
-        selected.push.apply(selected, matrix[rowIdx-1]);
-      });
-
-    }
-    else if (cols.length > 0 && rows.length == 0) {
-
-      cols.forEach(function (colIdx) {
-        selected.push.apply(selected, getColumn(matrix, colIdx-1));
-      });
-
-    }
-    else {
-
-      var indexes2d = combine(rows, cols);
-      
-      indexes2d.forEach(function (rowColArray) {
-        var col = rowColArray[0];
-        var row = rowColArray[1];
-        selected.push(matrix[col-1][row-1]);
-      });
-
-    }
-
-    console.log(selected);
-
-    selected.forEach(function (sel) {
-      $("#_"+sel).addClass('selected');
-    });
-
-    return selected;
-
-  }
-
-  function getRandomElement(array) {
-    return array[Math.floor(Math.random()*array.length)]
-  }
-
-  var currentElement = null;
-
-  function playForGame(sound) {
-    if (playing !== null && !playing.ended) playing.pause();
-    playing = new Audio(sound+'.wav');
-    playing.play();
-  }
-
-  function playBell() {
-    new Audio('bell.wav').play();
-  }
-
-  $(function() {
-
-    $("td.play-sound").click(function (e) {
-      var elemId = $(this).attr('id');
-      var elemName = elemId.replace('_', '');
-      playSound(e, elemName);
-      if ($(this).hasClass('selected')) {
-        if (elemName === currentElement) {
-          setTimeout(function(){
-            playBell();
-            setTimeout(function(){
-              currentElement = getRandomElement(selectedChars);
-              playForGame(currentElement);
-            }, 1500);
-          }, 1500);
-        }
-      }
-    });
-
-  });
-
-
-  function handleSpacebar(shiftKey) {
-
-    if (selectedChars.length == 0) return;
-
-    if (shiftKey) {
-      playForGame(currentElement);
-      $('#_'+currentElement).fadeOut(150).fadeIn(150, function () {
-        setTimeout(function(){
-          currentElement = getRandomElement(selectedChars);
-          playForGame(currentElement);
-        }, 1500);
-      });
-    }
-    else {
-      playForGame(currentElement);
-    }
-
-  }
-
-  $(window).keydown(function(e) {
-    if (e.which === 32) {
-      e.preventDefault();
-      handleSpacebar(e.shiftKey);
-      return false;
-    }
-  });
-
-
 </script>
 <h1 align="center" style="margin-top:50px;">Tibetan Consonants and Their Sounds</h1>
 <div class="spokenby" align="center">Spoken by Ge-she Ge-lek-cho-dak</div>
@@ -516,9 +353,9 @@
 <div class="instructions">
     <p>Click on individual characters to play them once. Click on row or column headers to play entire row or column (up to the red dividing line where
     the regular pattern stops).</p>
-    <p>You can also play a guessing game by using the checkboxes at the bottom and left to select columns/rows/cells. Pressing the spacebar will play a randomly selected character from among the selection. Click on the cells to guess which sound is being played. If you are correct, you will hear a "ding" and a new character will be played. You can press the space bar again to hear the sound again. To skip to a new character without guessing, press shift-space bar.</p>
 </div>
 
+<a onclick="playSoundRowCol(1,1);">Test</a>
 <table>
 
     <tbody>
@@ -542,27 +379,27 @@
             <h3>Gutterals</h3>
             <p>Sound produced from throat</p>
         </td>
-        <td class="play-sound" id="_ka">
+        <td bgcolor="white" onclick="playSound(event,'ka');" id="_ka">
             <img src="gif/ka.png" alt="ka" />
             <div class="spelling"><span class="overline">g</span>a</div>
             <div class="spelling-wylie">ka</div>
         </td>
-        <td class="play-sound" id="_kha">
+        <td onclick="playSound(event,'kha');" id="_kha">
             <img src="gif/kha.png" alt="kha" />
             <div class="spelling">kha</div>
             <div class="spelling-wylie">kha</div>
         </td>
-        <td class="play-sound" id="_ga">
+        <td onclick="playSound(event,'ga');" id="_ga">
             <img src="gif/ga.png" alt="ga" />
             <div class="spelling">ka</div>
             <div class="spelling-wylie">ga</div>
         </td>
-        <td class="play-sound" id="_nga">
+        <td onclick="playSound(event,'nga');" id="_nga">
             <img src="gif/nga.png" alt="nga" />
             <div class="spelling"><span class="underline">n</span>ga</div>
             <div class="spelling-wylie">nga</div>
         </td>
-        <td class="guessing-game"><input class="row" type="checkbox" name="row1" value="1"></td>
+        <td class="guessing-game"><input type="checkbox" name="row1" value="1"></td>
     </tr>
 
     <tr>
@@ -570,27 +407,27 @@
             <h3>Palatals</h3>
             <p>Tongue touching hard palate</p>
         </td>
-        <td class="play-sound" id="_ca">
+        <td onclick="playSound(event,'ca');" id="_ca">
             <img src="gif/ca.png" alt="ca" />
             <div class="spelling"><span class="overline">j</span>a</div>
             <div class="spelling-wylie">ca</div>
         </td>
-        <td class="play-sound" id="_cha">
+        <td onclick="playSound(event,'cha');" id="_cha">
             <img src="gif/cha.png" alt="cha" />
             <div class="spelling">cha</div>
             <div class="spelling-wylie">cha</div>
         </td>
-        <td class="play-sound" id="_ja">
+        <td onclick="playSound(event,'ja');" id="_ja">
             <img src="gif/ja.png" alt="ja" />
             <div class="spelling"><span class="underline">c</span>ha</div>
             <div class="spelling-wylie">ja</div>
         </td>
-        <td class="play-sound" id="_nya">
+        <td onclick="playSound(event,'nya');" id="_nya">
             <img src="gif/nya.png" alt="nya" />
             <div class="spelling"><span class="underline">n</span>ya</div>
             <div class="spelling-wylie">nya</div>
         </td>
-        <td class="guessing-game"><input class="row" type="checkbox" name="row2" value="2"></td>
+        <td class="guessing-game"><input type="checkbox" name="row2" value="2"></td>
     </tr>
 
 
@@ -599,27 +436,27 @@
             <h3>Dentals</h3>
             <p>Tongue touching back of front teeth</p>
         </td>
-        <td class="play-sound"  id="_ta">
+        <td onclick="playSound(event,'ta');" id="_ta">
             <img src="gif/ta.png" alt="ta" />
             <div class="spelling"><span class="overline">d</span>a</div>
             <div class="spelling-wylie">ta</div>
         </td>
-        <td class="play-sound"  id="_tha">
+        <td onclick="playSound(event,'tha');" id="_tha">
             <img src="gif/tha.png" alt="tha" />
             <div class="spelling">tha</div>
             <div class="spelling-wylie">tha</div>
         </td>
-        <td class="play-sound" id="_da" >
+        <td onclick="playSound(event,'da');" id="_da" >
             <img src="gif/da.png" alt="da" />
             <div class="spelling">ta</div>
             <div class="spelling-wylie">da</div>
         </td>
-        <td class="play-sound" id="_na">
+        <td onclick="playSound(event,'na');" id="_na">
             <img src="gif/na.png" alt="na" />
             <div class="spelling"><span class="underline">n</span>a</div>
             <div class="spelling-wylie">na</div>
         </td>
-        <td class="guessing-game"><input class="row" type="checkbox" name="row3" value="3"></td>
+        <td class="guessing-game"><input type="checkbox" name="row3" value="3"></td>
     </tr>
 
     <tr>
@@ -627,120 +464,120 @@
             <h3>Labials</h3>
             <p>Made using lips</p>
         </td>
-        <td class="play-sound" id="_pa">
+        <td onclick="playSound(event,'pa');" id="_pa">
             <img src="gif/pa.png" alt="pa" />
             <div class="spelling"><span class="overline">b</span>a</div>
             <div class="spelling-wylie">pa</div>
         </td>
-        <td class="play-sound" id="_pha">
+        <td onclick="playSound(event,'pha');" id="_pha">
             <img src="gif/pha.png" alt="pha" />
             <div class="spelling">pha</div>
             <div class="spelling-wylie">pha</div>
         </td>
-        <td class="play-sound red-bottom" id="_ba">
+        <td onclick="playSound(event,'ba');" class="red-bottom" id="_ba">
             <img src="gif/ba.png" alt="ba" />
             <div class="spelling">pa</div>
             <div class="spelling-wylie">ba</div>
         </td>
-        <td class="red-bottom play-sound" id="_ma">
+        <td onclick="playSound(event,'ma');" class="red-bottom" id="_ma">
             <img src="gif/ma.png" alt="ma" />
             <div class="spelling"><span class="underline">m</span>a</div>
             <div class="spelling-wylie">ma</div>
         </td>
-        <td class="guessing-game"><input class="row" type="checkbox" name="row4" value="4"></td>
+        <td class="guessing-game"><input type="checkbox" name="row4" value="4"></td>
     </tr>
 
     <tr>
         <td onclick="playSound(event,'gakha-row5');">
             <p>First three are palatals made with tongue touching hard palate, but also making z or s sound.</p>
         </td>
-        <td class="red-bottom play-sound" id="_tsa">
+        <td onclick="playSound(event,'tsa');" class="red-bottom" id="_tsa">
             <img src="gif/tsa.png" alt="tsa" />
             <div class="spelling"><span class="overline">d</span>za</div>
             <div class="spelling-wylie">tsa</div>
         </td>
-        <td class="red-bottom play-sound" id="_tsha">
+        <td onclick="playSound(event,'tsha');" class="red-bottom" id="_tsha">
             <img src="gif/tsha.png" alt="tsha" />
             <div class="spelling">tsha</div>
             <div class="spelling-wylie">tsha</div>
         </td>
-        <td class="red-left play-sound" id="_dza">
+        <td onclick="playSound(event,'dza');" class="red-left" id="_dza">
             <img src="gif/dza.png" alt="dza" />
             <div class="spelling"><span class="underline">d</span>za</div>
             <div class="spelling-wylie">dza</div>
         </td>
-        <td class="play-sound" id="_wa">
+        <td onclick="playSound(event,'wa');" id="_wa">
             <img src="gif/wa.png" alt="wa" />
             <div class="spelling">wa</div>
             <div class="spelling-wylie">wa</div>
         </td>
-        <td class="guessing-game"><input class="row" type="checkbox" name="row5" value="5"></td>
+        <td class="guessing-game"><input type="checkbox" name="row5" value="5"></td>
     </tr>
 
     <tr>
         <td onclick="playSound(event,'gakha-row6');">
             <p>First two are low tone sibilants. Last two are the short "a" and a semivowel "ya".</p>
         </td>
-        <td class="play-sound" id="_zha">
+        <td onclick="playSound(event,'zha');" id="_zha">
             <img src="gif/zha.png" alt="zha" />
             <div class="spelling"><span class="underline">s</span>ha</div>
             <div class="spelling-wylie">zha</div>
         </td>
-        <td class="play-sound" id="_za">
+        <td onclick="playSound(event,'za');" id="_za">
             <img src="gif/za.png" alt="za" />
             <div class="spelling"><span class="underline">s</span>a</div>
             <div class="spelling-wylie">za</div>
         </td>
-        <td class="play-sound" id="_a">
+        <td onclick="playSound(event,'a');" id="_a">
             <img src="gif/a.png" alt="a" />
             <div class="spelling">a</div>
             <div class="spelling-wylie">'a</div>
         </td>
-        <td class="play-sound" id="_ya">
+        <td onclick="playSound(event,'ya');" id="_ya">
             <img src="gif/ya.png" alt="ya" />
             <div class="spelling">ya</div>
             <div class="spelling-wylie">ya</div>
         </td>
-        <td class="guessing-game"><input class="row" type="checkbox" name="row6" value="6"></td>
+        <td class="guessing-game"><input type="checkbox" name="row6" value="6"></td>
     </tr>
 
     <tr>
         <td onclick="playSound(event,'gakha-row7');">
             <p>First two are remaining semivowels. Last two are high tone sibilants.</p>
         </td>
-        <td class="play-sound" id="_ra">
+        <td onclick="playSound(event,'ra');" id="_ra">
             <img src="gif/ra.png" alt="ra" />
             <div class="spelling">ra</div>
             <div class="spelling-wylie">ra</div>
         </td>
-        <td class="play-sound" id="_la">
+        <td onclick="playSound(event,'la');" id="_la">
             <img src="gif/la.png" alt="la" />
             <div class="spelling">la</div>
             <div class="spelling-wylie">la</div>
         </td>
-        <td class="play-sound" id="_sha">
+        <td onclick="playSound(event,'sha');" id="_sha">
             <img src="gif/sha.png" alt="sha" />
             <div class="spelling"><span class="overline">s</span>ha</div>
             <div class="spelling-wylie">sha</div>
         </td>
-        <td class="play-sound" id="_sa">
+        <td onclick="playSound(event,'sa');" id="_sa">
             <img src="gif/sa.png" alt="sa" />
             <div class="spelling"><span class="overline">s</span>a</div>
             <div class="spelling-wylie">sa</div>
         </td>
-        <td class="guessing-game"><input class="row" type="checkbox" name="row7" value="7"></td>
+        <td class="guessing-game"><input type="checkbox" name="row7" value="7"></td>
     </tr>
 
     <tr>
         <td onclick="playSound(event,'gakha-row8');">
             <p>Last letter is the prevalent "a" sound.</p>
         </td>
-        <td class="play-sound" id="_ha">
+        <td onclick="playSound(event,'ha');" id="_ha">
             <img src="gif/ha.png" alt="ha" />
             <div class="spelling">ha</div>
             <div class="spelling-wylie">ha</div>
         </td>
-        <td class="play-sound" id="_ah">
+        <td onclick="playSound(event,'ah');" id="_ah">
             <img src="gif/ah.png" alt="ah" />
             <div class="spelling">a</div>
             <div class="spelling-wylie">a</div>
@@ -749,14 +586,14 @@
         </td>
         <td valign="top">
         </td>
-        <td class="guessing-game"><input class="row" type="checkbox" name="row8" value="8"></td>
+        <td class="guessing-game"><input type="checkbox" name="row8" value="8"></td>
     </tr>
     <tr class="guessing-game">
         <th class="guessing-game"></th>
-        <th class="guessing-game"><input class="col" type="checkbox" name="col1" value="1"></th>
-        <th class="guessing-game"><input class="col" type="checkbox" name="col2" value="2"></th>
-        <th class="guessing-game"><input class="col" type="checkbox" name="col3" value="3"></th>
-        <th class="guessing-game"><input class="col" type="checkbox" name="col4" value="4"></th>
+        <th class="guessing-game"><input type="checkbox" name="col1" value="1"></th>
+        <th class="guessing-game"><input type="checkbox" name="col2" value="2"></th>
+        <th class="guessing-game"><input type="checkbox" name="col3" value="3"></th>
+        <th class="guessing-game"><input type="checkbox" name="col4" value="4"></th>
     </tr>
 
     </tbody>
