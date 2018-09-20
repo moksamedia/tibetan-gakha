@@ -229,15 +229,10 @@
     }
 
   }
-  function playWhole(event, faster) {
+  function playWhole(event, file) {
     event.preventDefault();
     if (playing !== null && !playing.ended) playing.pause();
-    if (faster) {
-      playing = new Audio('gakha-full-faster.wav');
-    }
-    else {
-      playing = new Audio('gakha-full.wav');
-    }
+    playing = new Audio(file+'.wav');
     playing.play();
     $(event.target).fadeOut(300).fadeIn(300).fadeOut(300).fadeIn(300).fadeOut(300).fadeIn(300);
   }
@@ -321,8 +316,7 @@
 <h1 align="center" style="margin-top:50px;">Tibetan Consonants and Their Sounds</h1>
 <div class="spokenby" align="center">Spoken by Ge-she Ge-lek-cho-dak</div>
 <div class="links-container">
-    <h3 id="play-whole" class="play-whole"><a href="" onclick="playWhole(event, false);">Listen to entire alphabet</a></h3>
-    <h3 id="play-whole" class="play-whole"><a href="" onclick="playWhole(event, true);">Listen to entire alphabet (a little faster)</a></h3>
+    <h3 id="play-whole" class="play-whole"><a href="" onclick="playWhole(event, 'gakha-full');">Listen to entire alphabet</a> <a href="" onclick="playWhole(event, 'gakha-full-faster');">(a little faster)</a> <a href="" onclick="playWhole(event, 'gakha-full-even-faster');">(even faster)</a></h3>
     <h3 id="show-hide" class="show-hide"><a href="" onclick="showHide(event, 'wylie');">Show/Hide Wylie Transliteration</a></h3>
     <h3 id="show-hide-central" class="show-hide"><a href="" onclick="showHide(event, 'central');">Show/Hide Central Tibetan Phonetization</a></h3>
 </div>
