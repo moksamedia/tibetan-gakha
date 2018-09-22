@@ -453,6 +453,13 @@
 
   var currentElement = null;
 
+  function getNextRandomChar() {
+    $(".current-element").removeClass("current-element");
+    currentElement = getRandomElement(selectedChars);
+    $("#_"+currentElement).addClass('current-element');
+    return currentElement;
+  }
+
   function playForGame(sound) {
     if (playing !== null && !playing.ended) playing.pause();
     playing = new Audio(sound+'.wav');
@@ -474,7 +481,7 @@
           setTimeout(function(){
             playBell();
             setTimeout(function(){
-              currentElement = getRandomElement(selectedChars);
+              currentElement = getNextRandomChar();
               playForGame(currentElement);
             }, 1500);
           }, 1500);
@@ -493,7 +500,7 @@
       playForGame(currentElement);
       $('#_'+currentElement).fadeOut(150).fadeIn(150, function () {
         setTimeout(function(){
-          currentElement = getRandomElement(selectedChars);
+          currentElement = getNextRandomChar();
           playForGame(currentElement);
         }, 1500);
       });

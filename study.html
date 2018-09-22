@@ -40,7 +40,7 @@
             font-family: sans-serif;
             color: gray;
             position: absolute;
-            bottom:0px;
+            bottom:5px;
             left:0px;
             display: none;
         }
@@ -58,160 +58,182 @@
             width: 150px;
         }
 
+        #button-container button {
+            display: block;
+        }
+
         button {
             margin-bottom: 10px;
         }
+
+        @media only screen
+        and (max-width: 768px) {
+
+            #flash-card-inner-container {
+                margin: 0 auto;
+            }
+
+            #button-container button {
+                display: block;
+                margin: 10px auto;
+            }
+
+            .col-sm:nth-of-type(2) {
+                margin-top: 50px;
+            }
+        }
+
 
     </style>
 <body>
 
 <div id="card-stack" style="display: none">
-    <div class="card" onclick="playSound(event,'ka-fixed');">
+    <div class="card" id="_ka">
         <img src="gif/ka.png" alt="ka" />
         <div class="spelling"><span class="overline">g</span>a</div>
         <div class="spelling-wylie">ka</div>
     </div>
-    <div class="card" onclick="playSound(event,'kha-fixed');">
+    <div class="card" id="_kha">
         <img src="gif/kha.png" alt="kha" />
         <div class="spelling">kha</div>
         <div class="spelling-wylie">kha</div>
     </div>
-    <div class="card">
+    <div class="card" id="_ga">
         <img src="gif/ga.png" alt="ga" />
         <div class="spelling">ka</div>
         <div class="spelling-wylie">ga</div>
     </div>
-    <div class="card" onclick="playSound(event,'nga');">
+    <div class="card" id="_nga">
         <img src="gif/nga.png" alt="nga" />
         <div class="spelling"><span class="underline">n</span>ga</div>
         <div class="spelling-wylie">nga</div>
     </div>
-    <div class="card" onclick="playSound(event,'ca');">
+    <div class="card" id="_ca">
         <img src="gif/ca.png" alt="ca" />
         <div class="spelling"><span class="overline">j</span>a</div>
         <div class="spelling-wylie">ca</div>
     </div>
-    <div class="card" onclick="playSound(event,'cha');">
+    <div class="card" id="_cha">
         <img src="gif/cha.png" alt="cha" />
         <div class="spelling">cha</div>
         <div class="spelling-wylie">cha</div>
     </div>
-    <div class="card" onclick="playSound(event,'ja');">
+    <div class="card" id="_ja">
         <img src="gif/ja.png" alt="ja" />
         <div class="spelling"><span class="underline">c</span>ha</div>
         <div class="spelling-wylie">ja</div>
     </div>
-    <div class="card" onclick="playSound(event,'nya');">
+    <div class="card" id="_nya">
         <img src="gif/nya.png" alt="nya" />
         <div class="spelling"><span class="underline">n</span>ya</div>
         <div class="spelling-wylie">nya</div>
     </div>
-    <div class="card" onclick="playSound(event,'ta');">
+    <div class="card" id="_ta">
         <img src="gif/ta.png" alt="ta" />
         <div class="spelling"><span class="overline">d</span>a</div>
         <div class="spelling-wylie">ta</div>
     </div>
-    <div class="card" onclick="playSound(event,'tha');">
+    <div class="card" id="_tha">
         <img src="gif/tha.png" alt="tha" />
         <div class="spelling">tha</div>
         <div class="spelling-wylie">tha</div>
     </div>
-    <div class="card" onclick="playSound(event,'da');">
+    <div class="card" id="_da">
         <img src="gif/da.png" alt="da" />
         <div class="spelling">ta</div>
         <div class="spelling-wylie">da</div>
     </div>
-    <div class="card" onclick="playSound(event,'na');">
+    <div class="card" id="_na">
         <img src="gif/na.png" alt="na" />
         <div class="spelling"><span class="underline">n</span>a</div>
         <div class="spelling-wylie">na</div>
     </div>
-    <div class="card" onclick="playSound(event,'pa-fixed');">
+    <div class="card" id="_pa">
         <img src="gif/pa.png" alt="pa" />
         <div class="spelling"><span class="overline">b</span>a</div>
         <div class="spelling-wylie">pa</div>
     </div>
-    <div class="card" onclick="playSound(event,'pha-fixed');">
+    <div class="card" id="_pha">
         <img src="gif/pha.png" alt="pha" />
         <div class="spelling">pha</div>
         <div class="spelling-wylie">pha</div>
     </div>
-    <div class="card" onclick="playSound(event,'ba-fixed');">
+    <div class="card" id="_ba">
         <img src="gif/ba.png" alt="ba" />
         <div class="spelling">pa</div>
         <div class="spelling-wylie">ba</div>
     </div>
-    <div class="card" onclick="playSound(event,'ma-fixed');">
+    <div class="card" id="_ma">
         <img src="gif/ma.png" alt="ma" />
         <div class="spelling"><span class="underline">m</span>a</div>
         <div class="spelling-wylie">ma</div>
     </div>
-    <div class="card" onclick="playSound(event,'tsa-fixed');">
+    <div class="card" id="_tsa">
         <img src="gif/tsa.png" alt="tsa" />
         <div class="spelling"><span class="overline">d</span>za</div>
         <div class="spelling-wylie">tsa</div>
     </div>
-    <div class="card" onclick="playSound(event,'tsha-fixed');">
+    <div class="card" id="_tsha">
         <img src="gif/tsha.png" alt="tsha" />
         <div class="spelling">tsha</div>
         <div class="spelling-wylie">tsha</div>
     </div>
-    <div class="card" onclick="playSound(event,'dza-fixed');">
+    <div class="card" id="_dza">
         <img src="gif/dza.png" alt="dza" />
         <div class="spelling"><span class="underline">d</span>za</div>
         <div class="spelling-wylie">dza</div>
     </div>
-    <div class="card" onclick="playSound(event,'wa-fixed');">
+    <div class="card" id="_wa">
         <img src="gif/wa.png" alt="wa" />
         <div class="spelling">wa</div>
         <div class="spelling-wylie">wa</div>
     </div>
-    <div class="card" onclick="playSound(event,'zha-fixed');">
+    <div class="card" id="_zha">
         <img src="gif/zha.png" alt="zha" />
         <div class="spelling"><span class="underline">s</span>ha</div>
         <div class="spelling-wylie">zha</div>
     </div>
-    <div class="card" onclick="playSound(event,'za-fixed');">
+    <div class="card" id="_za">
         <img src="gif/za.png" alt="za" />
         <div class="spelling"><span class="underline">s</span>a</div>
         <div class="spelling-wylie">za</div>
     </div>
-    <div class="card" onclick="playSound(event,'a-fixed');">
+    <div class="card" id="_a">
         <img src="gif/a.png" alt="a" />
         <div class="spelling">a</div>
         <div class="spelling-wylie">'a</div>
     </div>
-    <div class="card" onclick="playSound(event,'ya-fixed');">
+    <div class="card" id="_ya">
         <img src="gif/ya.png" alt="ya" />
         <div class="spelling">ya</div>
         <div class="spelling-wylie">ya</div>
     </div>
-    <div class="card" onclick="playSound(event,'ra-fixed');">
+    <div class="card" id="_ra">
         <img src="gif/ra.png" alt="ra" />
         <div class="spelling">ra</div>
         <div class="spelling-wylie">ra</div>
     </div>
-    <div class="card" onclick="playSound(event,'la-fixed');">
+    <div class="card" id="_la">
         <img src="gif/la.png" alt="la" />
         <div class="spelling">la</div>
         <div class="spelling-wylie">la</div>
     </div>
-    <div class="card" onclick="playSound(event,'sha-fixed');">
+    <div class="card" id="_sha">
         <img src="gif/sha.png" alt="sha" />
         <div class="spelling"><span class="overline">s</span>ha</div>
         <div class="spelling-wylie">sha</div>
     </div>
-    <div class="card" onclick="playSound(event,'sa-fixed');">
+    <div class="card" id="_sa">
         <img src="gif/sa.png" alt="sa" />
         <div class="spelling"><span class="overline">s</span>a</div>
         <div class="spelling-wylie">sa</div>
     </div>
-    <div class="card" onclick="playSound(event,'ha');">
+    <div class="card" id="_ha">
         <img src="gif/ha.png" alt="ha" />
         <div class="spelling">ha</div>
         <div class="spelling-wylie">ha</div>
     </div>
-    <div class="card" onclick="playSound(event,'ah');">
+    <div class="card" id="_ah">
         <img src="gif/ah.png" alt="ah" />
         <div class="spelling">a</div>
         <div class="spelling-wylie">a</div>
@@ -221,6 +243,13 @@
 <div class="container">
     <div class="row">
         <div class="col-sm">
+
+            <h3>Instructions</h3>
+            <p>This will randomly cycle through all the tibetan consonants.</p>
+            <p>Press the play button (or the space bar) to play the sound.</p>
+            <p>Press the next button (or shift-space bar) to play the sound, reveal the phoneticization or Wylie transliteration, and go to the next consonant.</p>
+            <p>Use the buttons below to select between the Wylie transliteration and a Central Tibetan phoneticization.</p>
+
             <div>
                 <button id="show-wylie" type="button" class="btn btn-secondary">Show Wylie</button>
             </div>
@@ -237,8 +266,10 @@
                 </div>
 
             </div>
-            <button style="width:200px;" id="next-card" type="button" class="btn btn-primary">Next!</button>
-
+            <div id="button-container">
+                <button style="width:200px;" id="play-card" type="button" class="btn btn-primary">Play!</button>
+                <button style="width:200px;" id="next-card" type="button" class="btn btn-primary">Next!</button>
+            </div>
         </div>
     </div>
 </div>
@@ -265,6 +296,11 @@
       nextCard();
     });
 
+    $("#play-card").click(function (e) {
+      e.preventDefault();
+      playCard();
+    });
+
     $("#show-wylie").click(function (e) {
       if (e.originalEvent.detail == 0)  {
         e.preventDefault();
@@ -275,8 +311,8 @@
       showing = 'spelling-wylie';
       $("#show-central-tibetan").removeClass("btn-success").addClass('btn-secondary');
       $("#show-wylie").addClass("btn-success").removeClass('btn-secondary');
-      $('.showing').find("div.spelling-wylie").css("display", "block");
-      $('.showing').find("div.spelling").css("display", "none");
+      //$('.showing').find("div.spelling-wylie").css("display", "block");
+      //$('.showing').find("div.spelling").css("display", "none");
     });
 
     $("#show-central-tibetan").click(function (e) {
@@ -290,9 +326,10 @@
       showing = 'spelling';
       $("#show-wylie").removeClass("btn-success").addClass('btn-secondary');
       $("#show-central-tibetan").addClass("btn-success").removeClass('btn-secondary');
-      $('.showing').find("div.spelling-wylie").css("display", "none");
-      $('.showing').find("div.spelling").css("display", "block");
+      //$('.showing').find("div.spelling-wylie").css("display", "none");
+      //$('.showing').find("div.spelling").css("display", "block");
     });
+
   });
 
 
@@ -300,43 +337,65 @@
 
   var currentCard = null;
 
-  function nextCard() {
-    $('.showing').remove();
-    currentCard = $(".card").random().clone().addClass('showing');
-    currentCard.prependTo($("#flash-card-inner-container"));
-  }
-
   function showWriting() {
     currentCard.children('div').css('display', 'none');
-    currentCard.children("div."+showing).css('display', 'block');
+    currentCard.children("div."+showing).fadeIn(200);
   }
 
-  function playSound(event, snd) {
-    //if (playing !== null && !playing.ended) playing.pause();
+  function nextCard() {
+
+    if (currentCard) showWriting();
+    playCard();
+    setTimeout(function(){
+      $('.showing').fadeOut(300, function () {
+        $(this).remove();
+        currentCard = $(".card").random().clone().addClass('showing');
+        currentCard.prependTo($("#flash-card-inner-container"));
+        $(currentCard).click(function () {
+          playCard();
+        });
+      });
+    }, 1000);
+
+
+
+  }
+
+  function playCard() {
+    var cardId = $(currentCard).attr('id');
+    var name = cardId.replace('_', '');
+    playSound(name);
+  }
+  
+  function playSound(snd) {
     playing = new Audio(snd + '.wav');
     playing.play();
   }
 
   $( document ).ready(function() {
-    nextCard();
+    currentCard = $(".card").random().clone().addClass('showing');
+    currentCard.prependTo($("#flash-card-inner-container"));
+    $(currentCard).click(function () {
+      playCard();
+    });
   });
 
-  $(window).keypress(function(e) {
+  function handleSpacebar(shiftKey) {
+
+    if (shiftKey) {
+      nextCard();
+    }
+    else {
+      playCard();
+    }
+
+  }
+
+  $(window).keydown(function(e) {
     if (e.which === 32) {
-      if (state === 'newcard') {
-        $('.showing').click();
-        state = 'writing';
-      }
-      /*
-      else if (state === 'writing') {
-        showWriting();
-        state = 'next';
-      }
-      */
-      else {
-        nextCard();
-        state = 'newcard';
-      }
+      e.preventDefault();
+      handleSpacebar(e.shiftKey);
+      return false;
     }
   });
 
