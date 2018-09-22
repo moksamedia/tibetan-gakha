@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body align="center" text="#000000" link="#000000"
       vlink="#660000" alink="#000000">
@@ -129,13 +130,20 @@
     }
 
     .instructions {
-        width: 50%;
         margin: 0 auto;
-        margin-top:50px;
+    }
+
+    .container {
+        margin-top: 50px;
+        margin-bottom: 50px;
     }
 
     .selected {
         background-color: rgba(244, 229, 66, 0.5);
+    }
+
+    .footer {
+        text-align: center;
     }
 
     @media only screen
@@ -523,24 +531,34 @@
 </script>
 <h1 align="center" style="margin-top:50px;">Tibetan Consonants and Their Sounds</h1>
 <div class="spokenby" align="center">Spoken by Ge-she Ge-lek-cho-dak</div>
-<div class="links-container">
-    <h3 id="play-whole" class="play-whole"><a href="" onclick="playWhole(event, 'gakha-full');">Listen to entire alphabet</a>
-        <div style="font-size:22px">(<a href="" onclick="playWhole(event, 'gakha-full-faster');">a little faster</a>)</div>
-        <div style="font-size:20px">(<a href="" onclick="playWhole(event, 'gakha-full-even-faster');">even faster</a>)</div>
-        <div style="font-size:18px">(<a href="" onclick="playWhole(event, 'auctioneer', 'mp3');">how fast can we go?!</a>)</div>
-    </h3>
-    <h3 id="show-hide" class="show-hide"><a href="" onclick="showHide(event, 'wylie');">Show/Hide Wylie Transliteration</a></h3>
-    <h3 id="show-hide-central" class="show-hide"><a href="" onclick="showHide(event, 'central');">Show/Hide Central Tibetan Phonetization</a></h3>
-</div>
 
-<div class="instructions">
-    <p>Click on individual characters to play them once. Click on row or column headers to play entire row or column (up to the red dividing line where
-    the regular pattern stops).</p>
-    <p>You can also play a guessing game by using the checkboxes at the bottom and right to select columns/rows/cells.
-        Pressing the spacebar will play a randomly selected character from among the selection.
-        Click on the cells to guess which sound is being played. If you are correct, you will hear a
-        "ding" and a new character will be played. You can press the space bar again to hear the sound again.
-        To skip to a new character without guessing, press shift-space bar.</p>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="instructions">
+                <h3>Instructions:</h3>
+                <p>Click on individual characters to play them once. Click on row or column headers to play entire row or column (up to the red dividing line where
+                    the regular pattern stops).</p>
+                <p>You can also play a guessing game by using the checkboxes at the bottom and right to select columns/rows/cells.
+                    Pressing the spacebar will play a randomly selected character from among the selection.
+                    Click on the cells to guess which sound is being played. If you are correct, you will hear a
+                    "ding" and a new character will be played. You can press the space bar again to hear the sound again.
+                    To skip to a new character without guessing, press shift-space bar.</p>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="links-container">
+                <h4 id="play-whole" class="play-whole"><a href="" onclick="playWhole(event, 'gakha-full');">Listen to entire alphabet</a>
+                    <div style="font-size:22px">(<a href="" onclick="playWhole(event, 'gakha-full-faster');">a little faster</a>)</div>
+                    <div style="font-size:20px">(<a href="" onclick="playWhole(event, 'gakha-full-even-faster');">even faster</a>)</div>
+                    <div style="font-size:18px">(<a href="" onclick="playWhole(event, 'auctioneer', 'mp3');">how fast can we go?!</a>)</div>
+                </h4>
+                <h4 id="show-hide" class="show-hide"><a href="" onclick="showHide(event, 'wylie');">Show/Hide Wylie Transliteration</a></h4>
+                <h4 id="show-hide-central" class="show-hide"><a href="" onclick="showHide(event, 'central');">Show/Hide Central Tibetan Phonetization</a></h4>
+                <h4><a href="./study.html">Play a simple flash-card style guessing game.</a></h4>
+            </div>
+        </div>
+    </div>
 </div>
 
 <table>
@@ -785,6 +803,8 @@
 
     </tbody>
 </table>
-<p style="margin-top:40px; margin-bottom: 5px;">Credit to William Magee of Maitripa and the UMA Institute.</p><p style="margin-top:5px;">This is an updated/restyled version of his work.</p>
+<div class="footer">
+    <p style="margin-top:40px; margin-bottom: 5px;">Credit to William Magee of Maitripa and the UMA Institute.</p><p style="margin-top:5px;">This is an updated/restyled version of his work.</p>
+</div>
 </body>
 </html>
