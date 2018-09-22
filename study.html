@@ -246,9 +246,10 @@
 
             <h3>Instructions</h3>
             <p>This will randomly cycle through all the tibetan consonants.</p>
-            <p>Press the play button (or the space bar) to play the sound.</p>
-            <p>Press the next button (or shift-space bar) to play the sound, reveal the phoneticization or Wylie transliteration, and go to the next consonant.</p>
-            <p>Use the buttons below to select between the Wylie transliteration and a Central Tibetan phoneticization.</p>
+            <p>Play button / spacebar: play the sound.</p>
+            <p>Keep button / enter: play the sound, reveal the phoneticization or Wylie transliteration, and go to the next consonant. Card stays in stack.</p>
+            <p>Remove button / delete: same as keep, but removes the current card from the stack.</p>
+            <p>Use the buttons below to select between the Wylie transliteration and a Central Tibetan phoneticization - or neither.</p>
 
             <div>
                 <button id="show-wylie" type="button" class="btn btn-secondary">Show Wylie</button>
@@ -256,19 +257,27 @@
             <div>
                 <button id="show-central-tibetan" type="button" class="btn btn-success">Show Central Tibetan Phonetization</button>
             </div>
+            <div>
+                <button id="show-neither" type="button" class="btn btn-secondary">Show neither</button>
+            </div>
         </div>
         <div class="col-sm">
+            <div style="width: 200px; margin: 0 auto;">
 
-            <div id="flash-card-outer-container">
+                <div id="flash-card-outer-container">
 
-                <div id="flash-card-inner-container">
+                    <div id="flash-card-inner-container">
+
+                    </div>
 
                 </div>
+                <div id="button-container">
+                    <button style="width:200px;" id="play-card" type="button" class="btn btn-primary">Play!</button>
+                    <h4>Next and...</h4>
+                    <button style="width:200px;" id="next-card" type="button" class="btn btn-danger">Keep!</button>
+                    <button style="width:200px;" id="next-card-remove" type="button" class="btn btn-success">Remove!</button>
+                </div>
 
-            </div>
-            <div id="button-container">
-                <button style="width:200px;" id="play-card" type="button" class="btn btn-primary">Play!</button>
-                <button style="width:200px;" id="next-card" type="button" class="btn btn-primary">Next!</button>
             </div>
         </div>
     </div>
@@ -285,14 +294,23 @@
     return $(this[randomIndex]);
   };
 
-  var state = 'newcard';
-
   var showing = 'spelling';
+
+  function removeCurrentCardFromStack() {
+    var currentCardId = currentCard.attr('id');
+    $("#card-stack #"+currentCardId).remove();
+  }
 
   $( document ).ready(function() {
 
     $("#next-card").click(function (e) {
       e.preventDefault();
+      nextCard();
+    });
+
+    $("#next-card-remove").click(function (e) {
+      e.preventDefault();
+      removeCurrentCardFromStack();
       nextCard();
     });
 
@@ -310,6 +328,7 @@
       e.preventDefault();
       showing = 'spelling-wylie';
       $("#show-central-tibetan").removeClass("btn-success").addClass('btn-secondary');
+      $("#show-neither").removeClass("btn-success").addClass('btn-secondary');
       $("#show-wylie").addClass("btn-success").removeClass('btn-secondary');
       //$('.showing').find("div.spelling-wylie").css("display", "block");
       //$('.showing').find("div.spelling").css("display", "none");
@@ -325,7 +344,24 @@
       e.preventDefault();
       showing = 'spelling';
       $("#show-wylie").removeClass("btn-success").addClass('btn-secondary');
+      $("#show-neither").removeClass("btn-success").addClass('btn-secondary');
       $("#show-central-tibetan").addClass("btn-success").removeClass('btn-secondary');
+      //$('.showing').find("div.spelling-wylie").css("display", "none");
+      //$('.showing').find("div.spelling").css("display", "block");
+    });
+
+    $("#show-neither").click(function (e) {
+
+      if (e.originalEvent.detail == 0)  {
+        e.preventDefault();
+        return;
+      }
+
+      e.preventDefault();
+      showing = 'neither';
+      $("#show-wylie").removeClass("btn-success").addClass('btn-secondary');
+      $("#show-central-tibetan").removeClass("btn-success").addClass('btn-secondary');
+      $("#show-neither").addClass("btn-success").removeClass('btn-secondary');
       //$('.showing').find("div.spelling-wylie").css("display", "none");
       //$('.showing').find("div.spelling").css("display", "block");
     });
@@ -342,10 +378,13 @@
     currentCard.children("div."+showing).fadeIn(200);
   }
 
-  function nextCard() {
+  function nextCard(shouldRemove) {
 
     if (currentCard) showWriting();
     playCard();
+    if (shouldRemove) {
+      removeCurrentCardFromStack();
+    }
     setTimeout(function(){
       $('.showing').fadeOut(300, function () {
         $(this).remove();
@@ -383,7 +422,7 @@
   function handleSpacebar(shiftKey) {
 
     if (shiftKey) {
-      nextCard();
+      nextCard(false);
     }
     else {
       playCard();
@@ -397,6 +436,18 @@
       handleSpacebar(e.shiftKey);
       return false;
     }
+
+    console.log(e.which);
+    console.log(e.keyCode);
+
+    if(e.keyCode == 8) {
+        nextCard(true);
+    }
+
+    if(e.keyCode == 13) {
+      nextCard(false);
+    }
+
   });
 
 </script>
