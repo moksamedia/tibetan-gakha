@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verses</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+    </script>
+    <style>
+        .image-container, .title-header {
+            text-align: center;
+        }
+        .title-header {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .image-container img {
+            cursor: pointer;
+        }
+
+        .tibetan-text {
+            font-size: 2.0em;
+            cursor: pointer;
+            color:lightblue;
+        }
+    </style>
+    <script>
+
+        var playing = null;
+
+        function playSound(snd) {
+          if (playing !== null && !playing.ended) playing.pause();
+          playing = new Audio(snd + '.mp3');
+          playing.play();
+        }
+
+        $(document).ready(function ()
+        {
+          $(".image-container img").click(function (e) {
+            var imageSrc = $(this).attr('src');
+            var imageName = imageSrc.replace('.jpg', '');
+            playSound(imageName);
+          });
+
+          $(".image-container p.tibetan-text").click(function (e) {
+            var imageSrc = $(this).attr('id');
+            playSound(imageSrc);
+          });
+        });
+    </script>
+</head>
+<body>
+
+    <div class="title-header">
+        <h2>Yang-jen-ga-way-lo-dro's Grammar Verse</h2>
+        <h3>Encoded by William Magee</h3>
+        <h3>Spoken by Sil-gar Rinpoche</h3>
+    </div>
+
+    <div class="image-container">
+        <img src="./001.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./007.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./008.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./009.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./010.jpg"/>
+    </div>
+
+    <div class="image-container">
+        <img src="./011.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./012.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./013.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./014.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./015.jpg"/>
+    </div>
+
+    <div class="image-container">
+        <img src="./016.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./017.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./018.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./019.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./020.jpg"/>
+    </div>
+
+    <div class="image-container">
+        <img src="./021.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./022.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./023.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./024.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./025.jpg"/>
+    </div>
+
+    <div class="image-container">
+        <img src="./026.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./027.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./028.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./029.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./030.jpg"/>
+    </div>
+
+    <div class="image-container">
+        <img src="./031.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./032.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./033.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./034.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./035.jpg"/>
+    </div>
+
+    <div class="image-container">
+        <img src="./036.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./037.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./038.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./039.jpg"/>
+    </div>
+    <div class="image-container">
+        <img src="./040.jpg"/>
+    </div>
+
+</body>
+</html>
