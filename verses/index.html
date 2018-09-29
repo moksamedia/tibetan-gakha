@@ -44,6 +44,19 @@
             var imageSrc = $(this).attr('src');
             var imageName = imageSrc.replace('.jpg', '');
             playSound(imageName);
+            $(this).fadeOut(150).fadeIn(150);
+            if ($("#playtwo").is(':checked')) {
+              var that = $(this);
+              playing.addEventListener("ended", function(){
+                var next = that.parent().next().find("img");
+                if (next) {
+                  imageSrc = next.attr('src');
+                  imageName = imageSrc.replace('.jpg', '');
+                  playSound(imageName);
+                  next.fadeOut(150).fadeIn(150);
+                }
+              });
+            }
           });
 
           $(".image-container p.tibetan-text").click(function (e) {
@@ -59,6 +72,7 @@
         <h2>Yang-jen-ga-way-lo-dro's Grammar Verse</h2>
         <h3>Encoded by William Magee</h3>
         <h3>Spoken by Sil-gar Rinpoche</h3>
+        <input id="playtwo" type="checkbox" name="playtwo" value="playtwo" checked> Play verses two lines at a time<br>
     </div>
 
     <div class="image-container">
