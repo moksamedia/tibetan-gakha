@@ -10,9 +10,21 @@
             crossorigin="anonymous">
     </script>
     <style>
+
+        body, .image-container, .image-container img {
+            cursor: url(http://tibetan:8888/verses/red-dot-image-png-2.png) 105 105, auto;
+        }
+
         .image-container, .title-header {
             text-align: center;
         }
+
+        .image-container
+        {
+            width: 50%;
+            margin: 0 auto;
+        }
+
         .title-header {
             margin-top: 50px;
             margin-bottom: 50px;
@@ -27,6 +39,39 @@
             cursor: pointer;
             color:lightblue;
         }
+
+        /* Style the header */
+        .header {
+            padding: 10px 16px;
+            background: transparent;
+            color: black;
+        }
+
+        /* Page content */
+        .content {
+            padding: 16px;
+        }
+
+        /* The sticky class is added to the header with JS when it reaches its scroll position */
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: white;
+            border-bottom: 1px solid gray;
+        }
+
+        /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+        .sticky + .content {
+            padding-top: 102px;
+        }
+
+        .line-numbers {
+            float: left;
+            margin-top:30px;
+        }
+
+
     </style>
     <script>
 
@@ -63,7 +108,38 @@
             var imageSrc = $(this).attr('id');
             playSound(imageSrc);
           });
+
         });
+
+
+        $(document).ready(function ()
+        {
+          // When the user scrolls the page, execute myFunction
+          window.onscroll = function() {myFunction()};
+
+          // Get the header
+          var header = document.getElementById("myHeader");
+
+          // Get the offset position of the navbar
+          var sticky = header.offsetTop;
+
+          // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+          function myFunction() {
+            if (window.pageYOffset > sticky) {
+              header.classList.add("sticky");
+            } else {
+              header.classList.remove("sticky");
+            }
+          }
+
+          $(".image-container").each(function (index) {
+            $(this).append("<div class='line-numbers'>"+(index+1)+"</div>")
+          })
+
+        });
+
+
+
     </script>
 </head>
 <body>
@@ -72,7 +148,9 @@
         <h2>Yang-jen-ga-way-lo-dro's Grammar Verse</h2>
         <h3>Encoded by William Magee</h3>
         <h3>Spoken by Sil-gar Rinpoche</h3>
-        <input id="playtwo" type="checkbox" name="playtwo" value="playtwo" checked> Play verses two lines at a time<br>
+        <div class="header" id="myHeader">
+            <input id="playtwo" type="checkbox" name="playtwo" value="playtwo" checked> Play verses two lines at a time<br>
+        </div>
     </div>
 
     <div class="image-container">
