@@ -67,6 +67,26 @@
             margin-top:30px;
         }
 
+        .header {
+            z-index:100;
+        }
+
+        .line-num-container {
+            display:table;
+            height:100%;
+            width:100%;
+            text-align:right;
+        }
+
+        .line-num {
+            display:table-cell;
+            vertical-align: middle;
+        }
+
+        .verse-img {
+            height:160%;
+            width: auto;
+        }
 
     </style>
     <script>
@@ -107,7 +127,6 @@
 
         });
 
-
         $(document).ready(function ()
         {
           // When the user scrolls the page, execute myFunction
@@ -128,12 +147,7 @@
             }
           }
 
-          $(".image-container").each(function (index) {
-            $(this).append("<div class='line-numbers'><p>"+(index+1)+"</p></div>")
-          })
-
         });
-
 
 
     </script>
@@ -149,117 +163,23 @@
         </div>
     </div>
 
-    <div class="image-container">
-        <img src="./001.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./007.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./008.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./009.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./010.jpg"/>
-    </div>
-
-    <div class="image-container">
-        <img src="./011.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./012.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./013.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./014.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./015.jpg"/>
+    <div class="container">
+        <?php for ($i=6;$i<98;$i++) { ?>
+          <div class="row">
+            <div class="col-sm-1">
+                <div class="line-num-container">
+                    <span class="line-num"><?php echo $i - 5; ?></span>
+                </div>
+            </div>
+            <div class="col-sm-10" style="text-align:center;">
+                <img class="verse-img" src="./<?php echo str_pad($i, 3, '0', STR_PAD_LEFT); ?>.jpg"/>
+            </div>
+            <div class="col-sm-1">
+            </div>
+          </div>
+        <?php } ?>
     </div>
 
-    <div class="image-container">
-        <img src="./016.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./017.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./018.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./019.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./020.jpg"/>
-    </div>
-
-    <div class="image-container">
-        <img src="./021.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./022.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./023.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./024.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./025.jpg"/>
-    </div>
-
-    <div class="image-container">
-        <img src="./026.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./027.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./028.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./029.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./030.jpg"/>
-    </div>
-
-    <div class="image-container">
-        <img src="./031.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./032.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./033.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./034.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./035.jpg"/>
-    </div>
-
-    <div class="image-container">
-        <img src="./036.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./037.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./038.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./039.jpg"/>
-    </div>
-    <div class="image-container">
-        <img src="./040.jpg"/>
-    </div>
 
 </body>
 </html>
