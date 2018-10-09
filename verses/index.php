@@ -26,7 +26,7 @@
             margin-bottom: 50px;
         }
 
-        .image-container img {
+        img.verse-img {
             cursor: pointer;
         }
 
