@@ -30,12 +30,6 @@
             cursor: pointer;
         }
 
-        .tibetan-text {
-            font-size: 2.0em;
-            cursor: pointer;
-            color:lightblue;
-        }
-
         /* Style the header */
         .header {
             padding: 10px 16px;
@@ -88,6 +82,12 @@
             width: auto;
         }
 
+        .tibetan-text {
+            font-size:2.9em;
+            line-height:3.0em;
+            cursor: pointer;
+        }
+
     </style>
     <script>
 
@@ -101,28 +101,47 @@
 
         $(document).ready(function ()
         {
-          $(".image-container img").click(function (e) {
-            var imageSrc = $(this).attr('src');
-            var imageName = imageSrc.replace('.jpg', '');
-            playSound(imageName);
-            $(this).fadeOut(150).fadeIn(150);
-            if ($("#playtwo").is(':checked')) {
-              var that = $(this);
-              playing.addEventListener("ended", function(){
-                var next = that.parent().next().find("img");
-                if (next) {
-                  imageSrc = next.attr('src');
-                  imageName = imageSrc.replace('.jpg', '');
-                  playSound(imageName);
-                  next.fadeOut(150).fadeIn(150);
+
+            function isOdd(num) { return num % 2;}
+
+            function handleClick(current, elem) {
+
+                playSound(current, elem);
+
+                $(elem).fadeOut(150).fadeIn(150);
+
+                if ($("#playtwo").is(':checked')) {
+
+                  var that = $(elem);
+
+                  playing.addEventListener("ended", function(){
+
+                      var numInt = parseInt(current);
+
+                      numInt += 1;
+
+                      var nextSound = numInt.toString().padStart(3, '0');
+
+                      var next = $("#"+nextSound);
+
+                      if (next) {
+                        playSound(nextSound);
+                        next.fadeOut(150).fadeIn(150);
+                      }
+
+                  });
                 }
-              });
-            }
+
+          }
+
+          $("img.verse-img").click(function (e) {
+            var imageSrc = $(this).attr('src');
+            handleClick(imageSrc, this);
           });
 
-          $(".image-container p.tibetan-text").click(function (e) {
+          $("span.tibetan-text").click(function (e) {
             var imageSrc = $(this).attr('id');
-            playSound(imageSrc);
+            handleClick(imageSrc, this);
           });
 
         });
@@ -164,20 +183,57 @@
     </div>
 
     <div class="container">
-        <?php for ($i=6;$i<98;$i++) { ?>
-          <div class="row">
-            <div class="col-sm-1">
-                <div class="line-num-container">
-                    <span class="line-num"><?php echo $i - 5; ?></span>
+
+        <?php
+            require_once './verses.php';
+            $minText = 0;
+            $maxText = 30;
+
+            $minPics = 31;
+            $maxPics = 90;
+
+        ?>
+
+        <?php for ($i=1;$i<90;$i++) { ?>
+
+              <?php if ($i > $minPics && $i < $maxPics) { ?>
+
+              <div class="row">
+                <div class="col-sm-1">
+                    <div class="line-num-container">
+                        <span class="line-num"><?php echo $i; ?></span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-10" style="text-align:center;">
-                <img class="verse-img" src="./<?php echo str_pad($i, 3, '0', STR_PAD_LEFT); ?>.jpg"/>
-            </div>
-            <div class="col-sm-1">
-            </div>
-          </div>
+                <div class="col-sm-10" style="text-align:center;">
+                    <img id="<?php str_pad($i, 3, '0', STR_PAD_LEFT); ?>" class="verse-img" src="./<?php echo str_pad($i, 3, '0', STR_PAD_LEFT); ?>.jpg"/>
+                </div>
+                <div class="col-sm-1">
+                </div>
+              </div>
+
+              <?php } ?>
+
+
+          <?php if ($i > $minText && $i < $maxText) { ?>
+
+              <div class="row">
+                <div class="col-sm-1">
+                    <div class="line-num-container">
+                        <span class="line-num"><?php echo $i; ?></span>
+                    </div>
+                </div>
+                <div class="col-sm-10" style="text-align:center;">
+                    <span id="<?php echo str_pad($i, 3, '0', STR_PAD_LEFT); ?>" class="tibetan-text"><?php echo $verses[$i-1]; ?></span>
+                </div>
+                <div class="col-sm-1">
+                </div>
+
+              </div>
+
+          <?php } ?>
+
         <?php } ?>
+
     </div>
 
 
