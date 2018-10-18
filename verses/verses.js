@@ -49,6 +49,18 @@ $(document).ready(function ()
     handleClick(imageSrc, this);
   });
 
+  $("#increase-font").click(function (e) {
+    var tibetanText = $(".tibetan-text");
+    var currentSize = parseInt(tibetanText.css("font-size"));
+    tibetanText.css("font-size", currentSize*1.1);
+  });
+
+  $("#decrease-font").click(function (e) {
+    var tibetanText = $(".tibetan-text");
+    var currentSize = parseInt(tibetanText.css("font-size"));
+    tibetanText.css("font-size", currentSize*0.9);
+  });
+
 });
 
 $(document).ready(function ()

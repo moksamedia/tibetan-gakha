@@ -20,7 +20,8 @@
         <h3>Encoded by William Magee</h3>
         <h3>Spoken by Sil-gar Rinpoche</h3>
         <div class="header" id="myHeader">
-            <input id="playtwo" type="checkbox" name="playtwo" value="playtwo" checked> Play verses two lines at a time<br>
+            <div style="margin-right:30px; display:inline-block;">Font Size: <button id="increase-font" type="button" class="btn btn-outline-secondary btn-sm">+</button> <button id="decrease-font" type="button" class="btn btn-outline-secondary btn-sm">-</button></div>
+            <div style="display:inline-block;"><input id="playtwo" type="checkbox" name="playtwo" value="playtwo" checked> Play verses two lines at a time</div>
         </div>
     </div>
 
