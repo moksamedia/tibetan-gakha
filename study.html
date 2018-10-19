@@ -62,6 +62,29 @@
             display: block;
         }
 
+        .num-cards-container {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #card-stack {
+        }
+
+        .card-stack-row {
+            margin-top:100px;
+            margin-bottom: 100px;
+        }
+
+        #card-stack .card {
+            width: 130px;
+            display: inline-block;
+        }
+
+        #card-stack .card img {
+            height:75px;
+            width:75px;
+        }
+
         button {
             margin-bottom: 10px;
         }
@@ -87,159 +110,6 @@
     </style>
 <body>
 
-<div id="card-stack" style="display: none">
-    <div class="card" id="_ka">
-        <img src="gif/ka.png" alt="ka" />
-        <div class="spelling"><span class="overline">g</span>a</div>
-        <div class="spelling-wylie">ka</div>
-    </div>
-    <div class="card" id="_kha">
-        <img src="gif/kha.png" alt="kha" />
-        <div class="spelling">kha</div>
-        <div class="spelling-wylie">kha</div>
-    </div>
-    <div class="card" id="_ga">
-        <img src="gif/ga.png" alt="ga" />
-        <div class="spelling">ka</div>
-        <div class="spelling-wylie">ga</div>
-    </div>
-    <div class="card" id="_nga">
-        <img src="gif/nga.png" alt="nga" />
-        <div class="spelling"><span class="underline">n</span>ga</div>
-        <div class="spelling-wylie">nga</div>
-    </div>
-    <div class="card" id="_ca">
-        <img src="gif/ca.png" alt="ca" />
-        <div class="spelling"><span class="overline">j</span>a</div>
-        <div class="spelling-wylie">ca</div>
-    </div>
-    <div class="card" id="_cha">
-        <img src="gif/cha.png" alt="cha" />
-        <div class="spelling">cha</div>
-        <div class="spelling-wylie">cha</div>
-    </div>
-    <div class="card" id="_ja">
-        <img src="gif/ja.png" alt="ja" />
-        <div class="spelling"><span class="underline">c</span>ha</div>
-        <div class="spelling-wylie">ja</div>
-    </div>
-    <div class="card" id="_nya">
-        <img src="gif/nya.png" alt="nya" />
-        <div class="spelling"><span class="underline">n</span>ya</div>
-        <div class="spelling-wylie">nya</div>
-    </div>
-    <div class="card" id="_ta">
-        <img src="gif/ta.png" alt="ta" />
-        <div class="spelling"><span class="overline">d</span>a</div>
-        <div class="spelling-wylie">ta</div>
-    </div>
-    <div class="card" id="_tha">
-        <img src="gif/tha.png" alt="tha" />
-        <div class="spelling">tha</div>
-        <div class="spelling-wylie">tha</div>
-    </div>
-    <div class="card" id="_da">
-        <img src="gif/da.png" alt="da" />
-        <div class="spelling">ta</div>
-        <div class="spelling-wylie">da</div>
-    </div>
-    <div class="card" id="_na">
-        <img src="gif/na.png" alt="na" />
-        <div class="spelling"><span class="underline">n</span>a</div>
-        <div class="spelling-wylie">na</div>
-    </div>
-    <div class="card" id="_pa">
-        <img src="gif/pa.png" alt="pa" />
-        <div class="spelling"><span class="overline">b</span>a</div>
-        <div class="spelling-wylie">pa</div>
-    </div>
-    <div class="card" id="_pha">
-        <img src="gif/pha.png" alt="pha" />
-        <div class="spelling">pha</div>
-        <div class="spelling-wylie">pha</div>
-    </div>
-    <div class="card" id="_ba">
-        <img src="gif/ba.png" alt="ba" />
-        <div class="spelling">pa</div>
-        <div class="spelling-wylie">ba</div>
-    </div>
-    <div class="card" id="_ma">
-        <img src="gif/ma.png" alt="ma" />
-        <div class="spelling"><span class="underline">m</span>a</div>
-        <div class="spelling-wylie">ma</div>
-    </div>
-    <div class="card" id="_tsa">
-        <img src="gif/tsa.png" alt="tsa" />
-        <div class="spelling"><span class="overline">d</span>za</div>
-        <div class="spelling-wylie">tsa</div>
-    </div>
-    <div class="card" id="_tsha">
-        <img src="gif/tsha.png" alt="tsha" />
-        <div class="spelling">tsha</div>
-        <div class="spelling-wylie">tsha</div>
-    </div>
-    <div class="card" id="_dza">
-        <img src="gif/dza.png" alt="dza" />
-        <div class="spelling"><span class="underline">d</span>za</div>
-        <div class="spelling-wylie">dza</div>
-    </div>
-    <div class="card" id="_wa">
-        <img src="gif/wa.png" alt="wa" />
-        <div class="spelling">wa</div>
-        <div class="spelling-wylie">wa</div>
-    </div>
-    <div class="card" id="_zha">
-        <img src="gif/zha.png" alt="zha" />
-        <div class="spelling"><span class="underline">s</span>ha</div>
-        <div class="spelling-wylie">zha</div>
-    </div>
-    <div class="card" id="_za">
-        <img src="gif/za.png" alt="za" />
-        <div class="spelling"><span class="underline">s</span>a</div>
-        <div class="spelling-wylie">za</div>
-    </div>
-    <div class="card" id="_a">
-        <img src="gif/a.png" alt="a" />
-        <div class="spelling">a</div>
-        <div class="spelling-wylie">'a</div>
-    </div>
-    <div class="card" id="_ya">
-        <img src="gif/ya.png" alt="ya" />
-        <div class="spelling">ya</div>
-        <div class="spelling-wylie">ya</div>
-    </div>
-    <div class="card" id="_ra">
-        <img src="gif/ra.png" alt="ra" />
-        <div class="spelling">ra</div>
-        <div class="spelling-wylie">ra</div>
-    </div>
-    <div class="card" id="_la">
-        <img src="gif/la.png" alt="la" />
-        <div class="spelling">la</div>
-        <div class="spelling-wylie">la</div>
-    </div>
-    <div class="card" id="_sha">
-        <img src="gif/sha.png" alt="sha" />
-        <div class="spelling"><span class="overline">s</span>ha</div>
-        <div class="spelling-wylie">sha</div>
-    </div>
-    <div class="card" id="_sa">
-        <img src="gif/sa.png" alt="sa" />
-        <div class="spelling"><span class="overline">s</span>a</div>
-        <div class="spelling-wylie">sa</div>
-    </div>
-    <div class="card" id="_ha">
-        <img src="gif/ha.png" alt="ha" />
-        <div class="spelling">ha</div>
-        <div class="spelling-wylie">ha</div>
-    </div>
-    <div class="card" id="_ah">
-        <img src="gif/ah.png" alt="ah" />
-        <div class="spelling">a</div>
-        <div class="spelling-wylie">a</div>
-    </div>
-</div>
-
 <div class="container">
     <div class="row">
         <div class="col-sm">
@@ -262,7 +132,12 @@
             </div>
         </div>
         <div class="col-sm">
+
             <div style="width: 200px; margin: 0 auto;">
+
+                <div class="num-cards-container">
+                    Num Cards:<span id="num-cards">1</span>
+                </div>
 
                 <div id="flash-card-outer-container">
 
@@ -281,9 +156,162 @@
             </div>
         </div>
     </div>
+    <div class="rows card-stack-row">
+        <h3>Cards in the stack:</h3>
+        <div id="card-stack">
+            <div class="card" id="_ka">
+                <img src="gif/ka.png" alt="ka" />
+                <div class="spelling"><span class="overline">g</span>a</div>
+                <div class="spelling-wylie">ka</div>
+            </div>
+            <div class="card" id="_kha">
+                <img src="gif/kha.png" alt="kha" />
+                <div class="spelling">kha</div>
+                <div class="spelling-wylie">kha</div>
+            </div>
+            <div class="card" id="_ga">
+                <img src="gif/ga.png" alt="ga" />
+                <div class="spelling">ka</div>
+                <div class="spelling-wylie">ga</div>
+            </div>
+            <div class="card" id="_nga">
+                <img src="gif/nga.png" alt="nga" />
+                <div class="spelling"><span class="underline">n</span>ga</div>
+                <div class="spelling-wylie">nga</div>
+            </div>
+            <div class="card" id="_ca">
+                <img src="gif/ca.png" alt="ca" />
+                <div class="spelling"><span class="overline">j</span>a</div>
+                <div class="spelling-wylie">ca</div>
+            </div>
+            <div class="card" id="_cha">
+                <img src="gif/cha.png" alt="cha" />
+                <div class="spelling">cha</div>
+                <div class="spelling-wylie">cha</div>
+            </div>
+            <div class="card" id="_ja">
+                <img src="gif/ja.png" alt="ja" />
+                <div class="spelling"><span class="underline">c</span>ha</div>
+                <div class="spelling-wylie">ja</div>
+            </div>
+            <div class="card" id="_nya">
+                <img src="gif/nya.png" alt="nya" />
+                <div class="spelling"><span class="underline">n</span>ya</div>
+                <div class="spelling-wylie">nya</div>
+            </div>
+            <div class="card" id="_ta">
+                <img src="gif/ta.png" alt="ta" />
+                <div class="spelling"><span class="overline">d</span>a</div>
+                <div class="spelling-wylie">ta</div>
+            </div>
+            <div class="card" id="_tha">
+                <img src="gif/tha.png" alt="tha" />
+                <div class="spelling">tha</div>
+                <div class="spelling-wylie">tha</div>
+            </div>
+            <div class="card" id="_da">
+                <img src="gif/da.png" alt="da" />
+                <div class="spelling">ta</div>
+                <div class="spelling-wylie">da</div>
+            </div>
+            <div class="card" id="_na">
+                <img src="gif/na.png" alt="na" />
+                <div class="spelling"><span class="underline">n</span>a</div>
+                <div class="spelling-wylie">na</div>
+            </div>
+            <div class="card" id="_pa">
+                <img src="gif/pa.png" alt="pa" />
+                <div class="spelling"><span class="overline">b</span>a</div>
+                <div class="spelling-wylie">pa</div>
+            </div>
+            <div class="card" id="_pha">
+                <img src="gif/pha.png" alt="pha" />
+                <div class="spelling">pha</div>
+                <div class="spelling-wylie">pha</div>
+            </div>
+            <div class="card" id="_ba">
+                <img src="gif/ba.png" alt="ba" />
+                <div class="spelling">pa</div>
+                <div class="spelling-wylie">ba</div>
+            </div>
+            <div class="card" id="_ma">
+                <img src="gif/ma.png" alt="ma" />
+                <div class="spelling"><span class="underline">m</span>a</div>
+                <div class="spelling-wylie">ma</div>
+            </div>
+            <div class="card" id="_tsa">
+                <img src="gif/tsa.png" alt="tsa" />
+                <div class="spelling"><span class="overline">d</span>za</div>
+                <div class="spelling-wylie">tsa</div>
+            </div>
+            <div class="card" id="_tsha">
+                <img src="gif/tsha.png" alt="tsha" />
+                <div class="spelling">tsha</div>
+                <div class="spelling-wylie">tsha</div>
+            </div>
+            <div class="card" id="_dza">
+                <img src="gif/dza.png" alt="dza" />
+                <div class="spelling"><span class="underline">d</span>za</div>
+                <div class="spelling-wylie">dza</div>
+            </div>
+            <div class="card" id="_wa">
+                <img src="gif/wa.png" alt="wa" />
+                <div class="spelling">wa</div>
+                <div class="spelling-wylie">wa</div>
+            </div>
+            <div class="card" id="_zha">
+                <img src="gif/zha.png" alt="zha" />
+                <div class="spelling"><span class="underline">s</span>ha</div>
+                <div class="spelling-wylie">zha</div>
+            </div>
+            <div class="card" id="_za">
+                <img src="gif/za.png" alt="za" />
+                <div class="spelling"><span class="underline">s</span>a</div>
+                <div class="spelling-wylie">za</div>
+            </div>
+            <div class="card" id="_a">
+                <img src="gif/a.png" alt="a" />
+                <div class="spelling">a</div>
+                <div class="spelling-wylie">'a</div>
+            </div>
+            <div class="card" id="_ya">
+                <img src="gif/ya.png" alt="ya" />
+                <div class="spelling">ya</div>
+                <div class="spelling-wylie">ya</div>
+            </div>
+            <div class="card" id="_ra">
+                <img src="gif/ra.png" alt="ra" />
+                <div class="spelling">ra</div>
+                <div class="spelling-wylie">ra</div>
+            </div>
+            <div class="card" id="_la">
+                <img src="gif/la.png" alt="la" />
+                <div class="spelling">la</div>
+                <div class="spelling-wylie">la</div>
+            </div>
+            <div class="card" id="_sha">
+                <img src="gif/sha.png" alt="sha" />
+                <div class="spelling"><span class="overline">s</span>ha</div>
+                <div class="spelling-wylie">sha</div>
+            </div>
+            <div class="card" id="_sa">
+                <img src="gif/sa.png" alt="sa" />
+                <div class="spelling"><span class="overline">s</span>a</div>
+                <div class="spelling-wylie">sa</div>
+            </div>
+            <div class="card" id="_ha">
+                <img src="gif/ha.png" alt="ha" />
+                <div class="spelling">ha</div>
+                <div class="spelling-wylie">ha</div>
+            </div>
+            <div class="card" id="_ah">
+                <img src="gif/ah.png" alt="ah" />
+                <div class="spelling">a</div>
+                <div class="spelling-wylie">a</div>
+            </div>
+        </div>
+    </div>
 </div>
-
-
 
 </body>
 
@@ -298,10 +326,16 @@
 
   function removeCurrentCardFromStack() {
     var currentCardId = currentCard.attr('id');
-    $("#card-stack #"+currentCardId).remove();
+    $.when($("#card-stack #"+currentCardId).remove()).then(function () {
+      var numCards = $("#card-stack .card").length;
+      $("#num-cards").text(numCards);
+    });
   }
 
   $( document ).ready(function() {
+
+    var numCards = $("#card-stack .card").length;
+    $("#num-cards").text(numCards);
 
     $("#next-card").click(function (e) {
       e.preventDefault();
