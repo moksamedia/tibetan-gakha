@@ -30,9 +30,9 @@
         <?php
             require_once './verses.php';
             $minText = 0;
-            $maxText = 30;
+            $maxText = 50;
 
-            $minPics = 31;
+            $minPics = 51;
             $maxPics = 90;
 
         ?>

@@ -70,8 +70,13 @@ img.verse-img {
 }
 
 .tibetan-text {
-    font-size: 3.4em;
-    line-height: 2.4em;
+    font-size: 4.2em;
+    line-height: 2.0em;
     cursor: pointer;
     font-family: sans-serif;
+}
+
+.container {
+    max-width:100%;
+    width:100%;
 }
