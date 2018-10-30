@@ -74,6 +74,7 @@ img.verse-img {
     line-height: 2.0em;
     cursor: pointer;
     font-family: sans-serif;
+    //color:blue !important;
 }
 
 .container {
